@@ -5,7 +5,7 @@ import { useSuspenseQuery } from "@tanstack/react-query"
 
 const PrefetchComponent = () => {
     const trpc = useTRPC()
-    const { data } = useSuspenseQuery(trpc.hello.queryOptions({ text: "Savi- Prefetching Data" }))
+    const { data } = useSuspenseQuery(trpc.hello.queryOptions({ value: "Savi- Prefetching Data" }))
     return <div>
         {JSON.stringify(data)}
     </div>

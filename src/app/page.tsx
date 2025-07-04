@@ -5,9 +5,9 @@ import { dehydrate, HydrationBoundary } from "@tanstack/react-query";
 import { Suspense } from "react";
 
 export default async function Home() {
-  const data = await caller.hello({ text: "Savi - Fetching in Server Component " })
+  const data = await caller.hello({ value: "Savi - Fetching in Server Component " })
   const queryClient = getQueryClient()
-  void queryClient.prefetchQuery(trpc.hello.queryOptions({ text: "Savi- Prefetching Data" }))
+  void queryClient.prefetchQuery(trpc.hello.queryOptions({ value: "Savi- Prefetching Data" }))
 
   await (async () => {
     return new Promise((res) => {

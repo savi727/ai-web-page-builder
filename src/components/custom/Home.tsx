@@ -6,7 +6,7 @@ import { toast } from "sonner";
 
 export default function HomeComponent() {
     const trpc = useTRPC();
-    const { data } = useQuery(trpc.hello.queryOptions({ text: "Savi - Fetching in Client Component" }))
+    const { data } = useQuery(trpc.hello.queryOptions({ value: "Savi - Fetching in Client Component" }))
     const invoke = useMutation(trpc.invoke.mutationOptions({
         onSuccess: () => {
             toast.success("Background job started")
@@ -18,7 +18,7 @@ export default function HomeComponent() {
             {JSON.stringify(data)}
             <br />
 
-            <Button className="my-4 cursor-pointer" disabled={invoke.isPending} variant={"secondary"} onClick={() => invoke.mutate({ text: "savi" })}>
+            <Button className="my-4 cursor-pointer" disabled={invoke.isPending} variant={"secondary"} onClick={() => invoke.mutate({ value: "savi" })}>
                 Invoke Background Jobs
             </Button>
         </div>
