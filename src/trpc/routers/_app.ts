@@ -1,37 +1,8 @@
-import { z } from 'zod';
-import { baseProcedure, createTRPCRouter } from '../init';
-import { inngest } from '@/inngest/client';
-export const appRouter = createTRPCRouter({
-    invoke: baseProcedure.input(z.object({ value: z.string() })).mutation(
-        async ({ input }) => {
-            await inngest.send({
-                name: "app/ticket.created",
-                data: {
-                    "value": input.value
-                }
-            })
-            return { "ok": "success" }
-        }
-    ),
-    hello: baseProcedure
-        .input(
-            z.object({
-                value: z.string(),
-            }),
-        )
-        .query(async (opts) => {
-            await (async () => {
-                return new Promise((res) => {
-                    setTimeout(() => {
-                        res("Resolved")
-                    }, 2000)
-                })
-            })()
-            return {
+import { createTRPCRouter } from '../init';
+import { messageRouter } from '@/modules/messages/server/procedures';
 
-                greeting: `hello ${opts.input.value}`,
-            };
-        }),
-});
+export const appRouter = createTRPCRouter(
+    { message: messageRouter }
+);
 
 export type AppRouter = typeof appRouter;

@@ -1,17 +1,17 @@
 # This is a config for E2B sandbox template.
-# You can use template ID (jt16n1cir261cu5ro8e6) or template name (savi-test-template) to create a sandbox:
+# You can use template ID (k82vb4db9o9xn0hf7hi0) or template name (savi-test-001) to create a sandbox:
 
 # Python SDK
 # from e2b import Sandbox, AsyncSandbox
-# sandbox = Sandbox("savi-test-template") # Sync sandbox
-# sandbox = await AsyncSandbox.create("savi-test-template") # Async sandbox
+# sandbox = Sandbox("savi-test-001") # Sync sandbox
+# sandbox = await AsyncSandbox.create("savi-test-001") # Async sandbox
 
 # JS SDK
 # import { Sandbox } from 'e2b'
-# const sandbox = await Sandbox.create('savi-test-template')
+# const sandbox = await Sandbox.create('savi-test-001')
 
-team_id = "b649fb2b-8643-4e3d-bee6-e6815b2d51b8"
+team_id = "4c5dc4e9-be98-49f2-9405-59b1ce540fd4"
 start_cmd = "bash /compile_page.sh"
 dockerfile = "e2b.Dockerfile"
-template_name = "savi-test-template"
-template_id = "jt16n1cir261cu5ro8e6"
+template_name = "savi-test-001"
+template_id = "k82vb4db9o9xn0hf7hi0"

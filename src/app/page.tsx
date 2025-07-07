@@ -5,25 +5,14 @@ import { dehydrate, HydrationBoundary } from "@tanstack/react-query";
 import { Suspense } from "react";
 
 export default async function Home() {
-  const data = await caller.hello({ value: "Savi - Fetching in Server Component " })
-  const queryClient = getQueryClient()
-  void queryClient.prefetchQuery(trpc.hello.queryOptions({ value: "Savi- Prefetching Data" }))
 
-  await (async () => {
-    return new Promise((res) => {
-      setTimeout(() => {
-        res("Resolved")
-      }, 2000)
-    })
-  })()
 
   return (
-    <HydrationBoundary state={dehydrate(queryClient)}>
+    <HydrationBoundary >
       <Suspense fallback={<p>Loading...</p>}>
         <PrefetchComponent />
       </Suspense>
       <div>
-        {JSON.stringify(data)}
         <HomeComponent />
       </div>
     </HydrationBoundary>
