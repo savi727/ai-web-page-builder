@@ -6,6 +6,7 @@ import { MessageForm } from "./message-form"
 import { Dispatch, SetStateAction, useEffect, useRef } from "react"
 import { Fragment } from "@/generated/prisma"
 import { JsonValue } from "@/generated/prisma/runtime/library"
+import { MessageLoading } from "./message-loading"
 interface Props {
     projectId: string;
     activeFragement: Fragment | null
@@ -26,7 +27,7 @@ export const MessagesContainer = ({ projectId, activeFragement, setActiveFragmen
     const trpc = useTRPC()
     const { data: messages } = useSuspenseQuery(trpc.message.getMany.queryOptions({
         projectId: projectId
-    }))
+    }, { refetchInterval: 5000 }))
 
     useEffect(() => {
         const lastAssistantMessageFragment = messages.findLast((message) => message.role === "ASSISTANT" && !!message.fragment)
